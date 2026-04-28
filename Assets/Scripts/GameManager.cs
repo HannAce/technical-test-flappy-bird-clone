@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.Log("[GameManager] Game Over!");
+        //Debug.Log("[GameManager] Game Over!");
         IsGameOver = true;
         Time.timeScale = 0;
         // Replaced with event

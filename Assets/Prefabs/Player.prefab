@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3437200998462941386}
   - component: {fileID: 4942535849421604167}
   - component: {fileID: 7036442285160227296}
+  - component: {fileID: 5542392634696000964}
   - component: {fileID: 3373110045366405789}
   - component: {fileID: 424501441512132233}
   - component: {fileID: 642209630427327715}
@@ -64,6 +65,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e22447024a4814fb11e09e104a7ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCollisionDetector
+--- !u!114 &5542392634696000964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162056923039700520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f65a5bc6b741541b1ddbb011c15d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBoundary
 --- !u!33 &3373110045366405789
 MeshFilter:
   m_ObjectHideFlags: 0
