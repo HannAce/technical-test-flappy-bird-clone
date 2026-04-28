@@ -123,6 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5647853302069187674}
   - component: {fileID: 305257111383536865}
+  - component: {fileID: 6341851268940684633}
   - component: {fileID: 5798852225706120441}
   m_Layer: 0
   m_Name: Pipes
@@ -161,6 +162,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PipeMovement
   m_moveSpeed: 5
+--- !u!114 &6341851268940684633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758262337704269975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fb4ca73fa7d4c41a0fad578cdd2f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PipeDestroyer
 --- !u!54 &5798852225706120441
 Rigidbody:
   m_ObjectHideFlags: 0
