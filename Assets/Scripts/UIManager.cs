@@ -7,22 +7,35 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject m_startGameUI;
     [SerializeField] private GameObject m_GameOverUI;
 
-    public static UIManager Instance;
+    private GameManager m_gameManager;
+    
+    // No longer need singleton since using events
+    //public static UIManager Instance;
 
     private void Awake()
     {
-        Instance = this;
+        //Instance = this;
     }
 
     private void Start()
     {
+        m_gameManager = GameManager.Instance;
+        m_gameManager.OnGameStarted += DisableStartGameUI;
+        m_gameManager.OnGameOver += EnableGameOverUI;
+        
         EnableStartGameUI();
         DisableGameOverUI();
     }
 
     private void OnDestroy()
     {
-        Instance = null;
+        //Instance = null;
+
+        if (m_gameManager != null)
+        {
+            m_gameManager.OnGameStarted -= DisableStartGameUI;
+            m_gameManager.OnGameOver -= EnableGameOverUI;
+        }
     }
 
     private void EnableStartGameUI()
@@ -30,12 +43,12 @@ public class UIManager : MonoBehaviour
         m_startGameUI.SetActive(true);
     }
     
-    public void DisableStartGameUI()
+    private void DisableStartGameUI()
     {
         m_startGameUI.SetActive(false);
     }
     
-    public void EnableGameOverUI()
+    private void EnableGameOverUI()
     {
         m_GameOverUI.SetActive(true);
     }

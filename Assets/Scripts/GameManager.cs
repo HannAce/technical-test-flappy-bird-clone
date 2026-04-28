@@ -5,13 +5,16 @@ using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
-    private UIManager m_uiManager;
+    //private UIManager m_uiManager;
 
     public const float ScreenBoundaryX = 14f;
     public bool IsGameOver;
     public bool IsGameStarted;
     
     public static GameManager Instance;
+
+    public Action OnGameStarted;
+    public Action OnGameOver;
 
     private void Awake()
     {
@@ -20,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        m_uiManager = UIManager.Instance;
+        //m_uiManager = UIManager.Instance;
 
         IsGameOver = false;
         Time.timeScale = 0;
@@ -35,17 +38,19 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         IsGameStarted = true;
-        m_uiManager.DisableStartGameUI();
+        //m_uiManager.DisableStartGameUI();
+        OnGameStarted?.Invoke();
     }
     
 
     public void GameOver()
     {
         Debug.Log("[GameManager] Game Over!");
-        // TODO make game over event for other classes to subscribe to?
-        m_uiManager.EnableGameOverUI();
         IsGameOver = true;
         Time.timeScale = 0;
+        // Replaced with event
+        //m_uiManager.EnableGameOverUI();
+        OnGameOver?.Invoke();
     }
 
     public void RestartGame()
