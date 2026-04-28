@@ -4,10 +4,13 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     private int m_score;
-    [SerializeField] private ScoreUI m_scoreUI;
-    [SerializeField] private ScoreUI m_finalScoreUI;
+    // Replaced this with event, leaving for thought process
+    //[SerializeField] private ScoreUI m_scoreUI;
+    //[SerializeField] private ScoreUI m_finalScoreUI;
     
     public static ScoreManager Instance;
+
+    public Action<int> OnScoreChanged;
 
     private void Awake()
     {
@@ -22,9 +25,10 @@ public class ScoreManager : MonoBehaviour
     public void AddScore()
     {
         m_score++;
-        // TODO try to make an event for updating score which ScoreUI can subscribe to?
-        m_scoreUI.UpdateScoreUI(m_score);
-        m_finalScoreUI.UpdateScoreUI(m_score);
+        OnScoreChanged?.Invoke(m_score);
+        // Replaced this with event, leaving for thought process
+        //m_scoreUI.UpdateScoreUI(m_score);
+        //m_finalScoreUI.UpdateScoreUI(m_score);
         Debug.Log($"[ScoreManager] Score: {m_score}");
     }
 }
