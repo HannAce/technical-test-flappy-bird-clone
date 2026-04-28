@@ -8,10 +8,13 @@ public class UIManager : MonoBehaviour
 
     public static UIManager Instance;
 
-    private void Start()
+    private void Awake()
     {
         Instance = this;
-        
+    }
+
+    private void Start()
+    {
         DisableGameOverUI();
     }
 

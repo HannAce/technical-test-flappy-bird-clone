@@ -9,9 +9,9 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float m_SpawnDelay;
     
     // TODO change hard coded screen boundary to use Screen.width/height?
-    private float m_screenboundary = 14f;
-    private float m_pipeSpawnHeightRange = 3.5f;
-    
+    //getting from game manager now - private float m_screenboundary = 14f;
+    private float m_minpipeSpawnHeight = -3.5f;
+    private float m_maxpipeSpawnHeight = 3.5f;
 
     private void Start()
     {
@@ -27,14 +27,14 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnPipe()
     {
-        Vector3 spawnPosition = new Vector3(m_screenboundary, RandomPipeHeight(), 0);
+        float pipeSpawnHeight = GetRandomPipeHeight();
+        Vector3 spawnPosition = new Vector3(GameManager.screenBoundaryX, pipeSpawnHeight, 0);
 
         Instantiate(m_pipes, spawnPosition, Quaternion.identity);
     }
 
-    private float RandomPipeHeight()
+    private float GetRandomPipeHeight()
     {
-        return Random.Range(-m_pipeSpawnHeightRange, m_pipeSpawnHeightRange);
+        return Random.Range(m_minpipeSpawnHeight, m_maxpipeSpawnHeight);
     }
-    
 }
