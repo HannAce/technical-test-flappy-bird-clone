@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text m_scoreText;
+    [SerializeField] private bool m_isFinalScore;
 
     private void Start()
     {
@@ -13,6 +14,13 @@ public class ScoreUI : MonoBehaviour
 
     public void UpdateScoreUI(int score)
     {
-        m_scoreText.text = $"Score: {score}";
+        if (m_isFinalScore)
+        {
+            m_scoreText.text = $"Final Score: {score}"; 
+        }
+        else
+        {
+            m_scoreText.text = $"Score: {score}";
+        }
     }
 }
