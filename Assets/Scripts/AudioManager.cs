@@ -45,17 +45,17 @@ public class AudioManager : MonoBehaviour
 
     private void PlayFlapSFX()
     {
-        PlaySFX(m_flapSFX, 0.7f);
+        PlaySFX(m_flapSFX, 0.3f);
     }
 
     // Needed int parameter to be compatible with the event, is it okay if not used?
     private void PlayScoreSFX(int score)
     {
-        PlaySFX(m_scoreSFX, 0.7f);
+        PlaySFX(m_scoreSFX, 0.3f);
     }
     
     private void PlayGameOverSFX()
     {
-        PlaySFX(m_gameOverSFX, 0.8f);
+        PlaySFX(m_gameOverSFX, 0.4f);
     }
 }
