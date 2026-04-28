@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
         IsGameOver = false;
         Time.timeScale = 0;
+
+        Cursor.visible = false;
     }
 
     private void OnDestroy()
@@ -54,6 +56,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log("[GameManager] Game Over!");
         IsGameOver = true;
         Time.timeScale = 0;
+        Cursor.visible = true;
         // Replaced with event
         //m_uiManager.EnableGameOverUI();
         OnGameOver?.Invoke();
@@ -63,5 +66,4 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    
 }
