@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -13,22 +12,23 @@ public class ScoreUI : MonoBehaviour
     {
         m_scoreManager = ScoreManager.Instance;
         m_scoreManager.OnScoreChanged += UpdateScoreUI;
-        
+
         UpdateScoreUI(0);
     }
 
     private void OnDestroy()
     {
-        if (m_scoreManager != null) {
+        if (m_scoreManager != null)
+        {
             m_scoreManager.OnScoreChanged -= UpdateScoreUI;
         }
     }
 
-    public void UpdateScoreUI(int score)
+    private void UpdateScoreUI(int score)
     {
         if (m_isFinalScore)
         {
-            m_scoreText.text = $"Final Score: {score}"; 
+            m_scoreText.text = $"Final Score: {score}";
         }
         else
         {

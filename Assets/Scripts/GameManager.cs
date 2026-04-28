@@ -9,14 +9,15 @@ public class GameManager : MonoBehaviour
 
     public const float ScreenBoundaryX = 14f;
     public const float ScreenBoundaryPadding = 1f;
+    
     public bool IsGameOver;
     public bool IsGameStarted;
     
-    public static GameManager Instance;
-
     public Action OnGameStarted;
     public Action OnGameOver;
 
+    public static GameManager Instance;
+    
     private void Awake()
     {
         Instance = this;
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1.5f;
         IsGameStarted = true;
         //m_uiManager.DisableStartGameUI();
         OnGameStarted?.Invoke();

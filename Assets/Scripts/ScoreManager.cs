@@ -8,9 +8,9 @@ public class ScoreManager : MonoBehaviour
     //[SerializeField] private ScoreUI m_scoreUI;
     //[SerializeField] private ScoreUI m_finalScoreUI;
     
-    public static ScoreManager Instance;
-
     public Action<int> OnScoreChanged;
+
+    public static ScoreManager Instance;
 
     private void Awake()
     {

@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
   m_pipes: {fileID: 758262337704269975, guid: 6482d044837d37c46a4adff288ac78a1, type: 3}
-  m_SpawnDelay: 2.5
+  m_spawnDelay: 2.5
 --- !u!4 &758036607
 Transform:
   m_ObjectHideFlags: 0

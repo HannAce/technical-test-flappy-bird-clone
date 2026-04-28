@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -14,10 +13,10 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         PlayerInput.OnPlayerFlapped += PlayFlapSFX;
-        
+
         m_scoreManager = ScoreManager.Instance;
         m_scoreManager.OnScoreChanged += PlayScoreSFX;
-        
+
         m_gameManager = GameManager.Instance;
         m_gameManager.OnGameOver += PlayGameOverSFX;
     }
@@ -25,8 +24,8 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         PlayerInput.OnPlayerFlapped -= PlayFlapSFX;
-        
-        if (m_scoreManager != null) 
+
+        if (m_scoreManager != null)
         {
             m_scoreManager.OnScoreChanged -= PlayScoreSFX;
         }
@@ -42,7 +41,6 @@ public class AudioManager : MonoBehaviour
         m_audioSource.PlayOneShot(audioClip, volume);
     }
 
-
     private void PlayFlapSFX()
     {
         PlaySFX(m_flapSFX, 0.3f);
@@ -53,7 +51,7 @@ public class AudioManager : MonoBehaviour
     {
         PlaySFX(m_scoreSFX, 0.3f);
     }
-    
+
     private void PlayGameOverSFX()
     {
         PlaySFX(m_gameOverSFX, 0.4f);
