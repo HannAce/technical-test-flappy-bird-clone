@@ -53,7 +53,12 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        //Debug.Log("[GameManager] Game Over!");
+        if (IsGameOver)
+        {
+            return;
+        }
+
+        Debug.Log("[GameManager] Game Over!");
         IsGameOver = true;
         Time.timeScale = 0;
         Cursor.visible = true;

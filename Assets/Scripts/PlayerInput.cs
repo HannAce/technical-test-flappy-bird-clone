@@ -8,6 +8,12 @@ public class PlayerInput : MonoBehaviour
 
     private GameManager m_gameManager;
 
+    /*
+     * Wouldn't usually be comfortable using static events but didn't want to make this a singleton.
+     * Hoping this is used correctly?
+     */
+    public static Action OnPlayerFlapped;
+
     private void Start()
     {
         m_gameManager = GameManager.Instance;
@@ -30,6 +36,7 @@ public class PlayerInput : MonoBehaviour
         // Attempted to use AddForce, however the jump height not consistent
         //m_rigidbody.AddForce(0, m_flapForce, 0, ForceMode.VelocityChange);
         m_rigidbody.linearVelocity = new Vector3(0, m_flapForce, 0);
+        OnPlayerFlapped?.Invoke();
         
     }
 }
