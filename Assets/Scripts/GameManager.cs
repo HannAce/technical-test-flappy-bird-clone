@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     //private UIManager m_uiManager;
+    private Camera m_camera;
 
     public const float ScreenBoundaryX = 14f;
     public bool IsGameOver;
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        m_camera = Camera.main;
     }
 
     private void Start()
@@ -41,7 +42,11 @@ public class GameManager : MonoBehaviour
         //m_uiManager.DisableStartGameUI();
         OnGameStarted?.Invoke();
     }
-    
+
+    public Vector3 GetScreenBoundary()
+    {
+        return m_camera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+    }
 
     public void GameOver()
     {

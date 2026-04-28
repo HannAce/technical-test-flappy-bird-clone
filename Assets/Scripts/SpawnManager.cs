@@ -8,13 +8,17 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject m_pipes;
     [SerializeField] private float m_SpawnDelay;
     
-    // TODO change hard coded screen boundary to use Screen.width/height?
-    //getting from game manager now - private float m_screenboundary = 14f;
-    private float m_minpipeSpawnHeight = -3.5f;
-    private float m_maxpipeSpawnHeight = 3.5f;
+    // Added in game manager to avoid repeated variable
+    // private float m_screenboundary = 14f;
+    private GameManager m_gameManager;
+    
+    private float m_minpipeSpawnHeight;
+    private float m_maxpipeSpawnHeight;
 
     private void Start()
     {
+        m_gameManager = GameManager.Instance;
+        
         StartCoroutine(SpawnPipeRoutine());
     }
 
@@ -27,14 +31,17 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnPipe()
     {
-        float pipeSpawnHeight = GetRandomPipeHeight();
-        Vector3 spawnPosition = new Vector3(GameManager.ScreenBoundaryX, pipeSpawnHeight, 0);
-
+        Vector3 spawnPosition = GetRandomPipePosition();
         Instantiate(m_pipes, spawnPosition, Quaternion.identity);
     }
 
-    private float GetRandomPipeHeight()
+    private Vector3 GetRandomPipePosition()
     {
-        return Random.Range(m_minpipeSpawnHeight, m_maxpipeSpawnHeight);
+        m_minpipeSpawnHeight = -m_gameManager.GetScreenBoundary().y;
+        m_maxpipeSpawnHeight = m_gameManager.GetScreenBoundary().y;
+        
+        float randomPipeHeight = Random.Range(m_minpipeSpawnHeight, m_maxpipeSpawnHeight);
+
+        return new Vector3(m_gameManager.GetScreenBoundary().x, randomPipeHeight, 0);
     }
 }
