@@ -1,13 +1,15 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     private UIManager m_uiManager;
 
-    public const float screenBoundaryX = 14f;
-    public bool isGameOver;
+    public const float ScreenBoundaryX = 14f;
+    public bool IsGameOver;
+    public bool IsGameStarted;
     
     public static GameManager Instance;
 
@@ -20,8 +22,8 @@ public class GameManager : MonoBehaviour
     {
         m_uiManager = UIManager.Instance;
 
-        isGameOver = false;
-        Time.timeScale = 1;
+        IsGameOver = false;
+        Time.timeScale = 0;
     }
 
     private void OnDestroy()
@@ -32,6 +34,8 @@ public class GameManager : MonoBehaviour
     public void PlayGame()
     {
         Time.timeScale = 1;
+        IsGameStarted = true;
+        m_uiManager.DisableStartGameUI();
     }
     
 
@@ -40,7 +44,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("[GameManager] Game Over!");
         // TODO make game over event for other classes to subscribe to?
         m_uiManager.EnableGameOverUI();
-        isGameOver = true;
+        IsGameOver = true;
         Time.timeScale = 0;
     }
 

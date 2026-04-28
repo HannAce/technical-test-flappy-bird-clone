@@ -28,7 +28,7 @@ public class SpawnManager : MonoBehaviour
     private void SpawnPipe()
     {
         float pipeSpawnHeight = GetRandomPipeHeight();
-        Vector3 spawnPosition = new Vector3(GameManager.screenBoundaryX, pipeSpawnHeight, 0);
+        Vector3 spawnPosition = new Vector3(GameManager.ScreenBoundaryX, pipeSpawnHeight, 0);
 
         Instantiate(m_pipes, spawnPosition, Quaternion.identity);
     }

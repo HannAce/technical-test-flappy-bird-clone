@@ -15,12 +15,17 @@ public class PlayerInput : MonoBehaviour
 
     private void OnFlap()
     {
-        /*
-        if (m_gameManager.isGameOver)
+        if (!m_gameManager.IsGameStarted)
+        {
+            m_gameManager.PlayGame();
+            return;
+        }
+        
+        if (m_gameManager.IsGameOver)
         {
             m_gameManager.RestartGame();
+            return;
         }
-        */
         
         // Attempted to use AddForce, however the jump height not consistent
         //m_rigidbody.AddForce(0, m_flapForce, 0, ForceMode.VelocityChange);

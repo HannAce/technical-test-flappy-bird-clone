@@ -8,7 +8,7 @@ public class PipeDestroyer : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x < -GameManager.screenBoundaryX)
+        if (transform.position.x < -GameManager.ScreenBoundaryX)
         {
             DestroyPipe();
         }

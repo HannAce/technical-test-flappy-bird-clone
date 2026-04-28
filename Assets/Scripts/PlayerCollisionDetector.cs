@@ -19,7 +19,6 @@ public class PlayerCollisionDetector : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log($"Game Manager is null? {m_gameManager==null}");
         m_gameManager.GameOver();
     }
 }

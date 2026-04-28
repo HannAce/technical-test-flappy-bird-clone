@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private GameObject m_startGameUI;
     [SerializeField] private GameObject m_GameOverUI;
 
     public static UIManager Instance;
@@ -15,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        EnableStartGameUI();
         DisableGameOverUI();
     }
 
@@ -23,6 +25,16 @@ public class UIManager : MonoBehaviour
         Instance = null;
     }
 
+    private void EnableStartGameUI()
+    {
+        m_startGameUI.SetActive(true);
+    }
+    
+    public void DisableStartGameUI()
+    {
+        m_startGameUI.SetActive(false);
+    }
+    
     public void EnableGameOverUI()
     {
         m_GameOverUI.SetActive(true);
