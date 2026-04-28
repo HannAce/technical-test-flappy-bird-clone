@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private Camera m_camera;
 
     public const float ScreenBoundaryX = 14f;
+    public const float ScreenBoundaryPadding = 1f;
     public bool IsGameOver;
     public bool IsGameStarted;
     

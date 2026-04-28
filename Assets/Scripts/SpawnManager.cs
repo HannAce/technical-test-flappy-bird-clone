@@ -14,6 +14,7 @@ public class SpawnManager : MonoBehaviour
     
     private float m_minpipeSpawnHeight;
     private float m_maxpipeSpawnHeight;
+    private const float m_pipeSpawnPositionOffset = 0.4f;
 
     private void Start()
     {
@@ -37,11 +38,11 @@ public class SpawnManager : MonoBehaviour
 
     private Vector3 GetRandomPipePosition()
     {
-        m_minpipeSpawnHeight = -m_gameManager.GetScreenBoundary().y;
-        m_maxpipeSpawnHeight = m_gameManager.GetScreenBoundary().y;
+        m_minpipeSpawnHeight = -m_gameManager.GetScreenBoundary().y * m_pipeSpawnPositionOffset;
+        m_maxpipeSpawnHeight = m_gameManager.GetScreenBoundary().y * m_pipeSpawnPositionOffset;
         
         float randomPipeHeight = Random.Range(m_minpipeSpawnHeight, m_maxpipeSpawnHeight);
 
-        return new Vector3(m_gameManager.GetScreenBoundary().x, randomPipeHeight, 0);
+        return new Vector3(m_gameManager.GetScreenBoundary().x + GameManager.ScreenBoundaryPadding, randomPipeHeight, 0);
     }
 }
